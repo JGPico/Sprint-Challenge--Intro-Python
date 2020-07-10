@@ -20,41 +20,34 @@
 
 # Base Class
 class Vehicle:
-    def __init__(self, stat=None):
-        self.stat = stat
+    pass
 
 
 class GroundVehicle(Vehicle):
-    def __init__(self, stat=None, ground=None):
-        self.ground
-        super().__init__(stat)
+    def __init__(self):
+        super().__init__()
 
 
 class Car(GroundVehicle, Vehicle):
-    def __init__(self, stat=None, ground=None, car=None):
-        self.car = car
-        super().__init__(stat, ground, car)
+    def __init__(self):
+        super().__init__()
 
 
 class Motorcycle(GroundVehicle, Vehicle):
-    def __init__(self, stat=None, ground=None, motorcycle=None):
-        self.motorcycle = motorcycle
-        super().__init__(stat, ground, motorcycle)
+    def __init__(self):
+        super().__init__()
 
 
 class FlightVehicle(Vehicle):
-    def __init__(self, stat=None, flight=None):
-        self.flight
-        super().__init__(stat)
+    def __init__(self):
+        super().__init__()
 
 
 class Airplane(FlightVehicle, Vehicle):
-    def __init__(self, stat=None, flight=None, plane=None):
-        self.plane = plane
-        super().__init__(stat, flight, plane)
+    def __init__(self):
+        super().__init__()
 
 
 class Starship(FlightVehicle, Vehicle):
-    def __init__(self, stat=None, flight=None, ship=None):
-        self.ship = ship
-        super().__init__(stat, flight, ship)
+    def __init__(self):
+        super().__init__()
