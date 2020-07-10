@@ -1,4 +1,7 @@
 import csv
+import sys
+import os
+
 # Create a class to hold a city location. Call the class "City". It should have
 # fields for name, lat and lon (representing latitude and longitude).
 
@@ -33,7 +36,7 @@ def cityreader(cities=[]):
     # For each city record, create a new City instance and add it to the
     # `cities` list
 
-    with open('cities.csv', 'r') as csv_file:
+    with open(os.path.join(sys.path[0], 'cities.csv'), 'r') as csv_file:
         csv_reader = csv.reader(csv_file)
         next(csv_reader)
 
@@ -50,6 +53,7 @@ cityreader(cities)
 for c in cities:
     print(c)
 
+print()
 # STRETCH GOAL!
 #
 # Allow the user to input two points, each specified by latitude and longitude.
@@ -79,14 +83,40 @@ for c in cities:
 # Tucson: (32.1558,-110.8777)
 # Salt Lake City: (40.7774,-111.9301)
 
-# # TODO Get latitude and longitude values from the user
+# TODO Get latitude and longitude values from the user
+ilat1 = input("input latitude 1: ")
+ilon1 = input("input longitude 1: ")
+ilat2 = input("input latitude 2: ")
+ilon2 = input("input longitude 2: ")
 
-# def cityreader_stretch(lat1, lon1, lat2, lon2, cities=[]):
-#   # within will hold the cities that fall within the specified region
-#   within = []
 
-#   # TODO Ensure that the lat and lon valuse are all floats
-#   # Go through each city and check to see if it falls within
-#   # the specified coordinates.
+def cityreader_stretch(lat1, lon1, lat2, lon2, cities=[]):
+    # within will hold the cities that fall within the specified region
+    within = []
 
-#   return within
+    # Ensure that the lat and lon valuse are all floats
+    try:
+        float(lat1)
+        float(lon1)
+        float(lat2)
+        float(lon2)
+    except ValueError:
+        return"You need to enter numbers!"
+
+    # unsure how to normalize coordinates
+
+    # Go through each city and check to see if it falls within
+    # the specified coordinates.
+    for city in cities:
+        if float(city.lat) < float(lat1) and float(city.lat) > float(lat2):
+            if float(city.lon) < float(lon1) and float(city.lon) > float(lon2):
+                within.append(city)
+
+    return within
+
+
+printable = cityreader_stretch(ilat1, ilon1, ilat2, ilon2, cities)
+print()
+for p in printable:
+    print(p)
+print()
